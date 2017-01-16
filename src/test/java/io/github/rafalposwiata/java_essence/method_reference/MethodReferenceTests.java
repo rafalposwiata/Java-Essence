@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.function.Function;
 
 /**
  * @author Rafał Poświata.
@@ -44,6 +45,18 @@ public class MethodReferenceTests {
         String[] expectedStringsWithStarSuffixes = {"7*", "33*", "555*"};
 
         Assert.assertArrayEquals(expectedStringsWithStarSuffixes, stringsWithStarSuffixes);
+    }
+
+    @Test
+    public void lambdaAndMethodReferenceEquivalent() {
+        Function<String, Integer> stringToInteger = (String s) -> Integer.parseInt(s);
+        Function<String, Integer> stringToIntegerWithMethodReference = Integer::parseInt;
+
+        String stringRepresentationOfInteger = "1";
+        Integer expectedInteger = 1;
+
+        Assert.assertEquals(expectedInteger, stringToInteger.apply(stringRepresentationOfInteger));
+        Assert.assertEquals(expectedInteger, stringToIntegerWithMethodReference.apply(stringRepresentationOfInteger));
     }
 
     private class StringFormatter {
