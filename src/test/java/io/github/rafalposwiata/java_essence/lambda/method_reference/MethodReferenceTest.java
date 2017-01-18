@@ -30,6 +30,7 @@ public class MethodReferenceTest {
                 .stream(stringRepresentationsOfIntegers)
                 .map(String::length) //instance method stringObj.length()
                 .toArray(Integer[]::new);
+
         Integer[] expectedLengthsOfStrings = {1, 2, 3};
 
         Assert.assertArrayEquals(expectedLengthsOfStrings, lengthsOfStrings);
@@ -42,6 +43,7 @@ public class MethodReferenceTest {
                 .stream(stringRepresentationsOfIntegers)
                 .map(stringFormatter::addStarSuffix) //instance method of object stringFormatter
                 .toArray(String[]::new);
+
         String[] expectedStringsWithStarSuffixes = {"7*", "33*", "555*"};
 
         Assert.assertArrayEquals(expectedStringsWithStarSuffixes, stringsWithStarSuffixes);

@@ -12,9 +12,9 @@ public class People {
 
     private People(){}
 
-    public static final Person TOM_LEE = new Person("Tom", "Lee", 75.3);
+    public static final Person TOM_LEE = new Person("Tom", "Lee", 65.3);
 
-    public static final Person TOM_BERG = new Person("Tom", "Berg", 90.6);
+    public static final Person TOM_BERG = new Person("Tom", "Berg", 100.6);
 
     public static final Person MEGAN_CLARK = new Person("Megan", "Clark", 53.6);
 
