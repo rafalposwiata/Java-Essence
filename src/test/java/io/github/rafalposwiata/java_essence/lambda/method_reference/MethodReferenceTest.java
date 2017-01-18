@@ -1,4 +1,4 @@
-package io.github.rafalposwiata.java_essence.method_reference;
+package io.github.rafalposwiata.java_essence.lambda.method_reference;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import java.util.function.Function;
 /**
  * @author Rafał Poświata.
  */
-public class MethodReferenceTests {
+public class MethodReferenceTest {
 
     private Integer[] integers = {7, 33, 555};
     private String[] stringRepresentationsOfIntegers = {"7", "33", "555"};
