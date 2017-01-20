@@ -6,10 +6,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static io.github.rafalposwiata.java_essence.data.People.ALL_PEOPLE;
 import static io.github.rafalposwiata.java_essence.model.Gender.FEMALE;
+import static java.util.stream.Collectors.toSet;
 
 /**
  * @author Rafał Poświata.
@@ -40,7 +40,7 @@ public class TerminalOperationTest {
         Set<String> names = ALL_PEOPLE
                 .stream()
                 .map(Person::getName)
-                .collect(Collectors.toSet());
+                .collect(toSet());
 
         Set<String> expectedNames = Sets.newHashSet("Tom", "Megan", "Julia");
 
