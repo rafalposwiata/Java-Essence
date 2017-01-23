@@ -17,7 +17,7 @@ public class People {
 
     public static final Person TOM_LEE = new Person("Tom", "Lee", MALE, 65.3);
 
-    public static final Person TOM_BERG = new Person("Tom", "Berg", MALE, 100.6);
+    public static final Person TOM_BERG = new Person("Tom", "Berg", MALE, 98.1);
 
     public static final Person MEGAN_CLARK = new Person("Megan", "Clark", FEMALE, 53.6);
 
