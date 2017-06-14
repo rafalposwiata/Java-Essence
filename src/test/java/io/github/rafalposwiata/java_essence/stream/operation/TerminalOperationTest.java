@@ -115,7 +115,7 @@ public class TerminalOperationTest {
         // With findAny we don't know which one will be chosen
         Assert.assertTrue(MEGAN_CLARK.equals(anyWoman) || JULIA_CLARK.equals(anyWoman));
 
-        // With findFirst will be chosen Megan, because see is first woman in ALL_PEOPLE list
+        // With findFirst will be chosen Megan, because she is first woman in ALL_PEOPLE list
         Assert.assertTrue(MEGAN_CLARK.equals(firstWomen));
     }
 
