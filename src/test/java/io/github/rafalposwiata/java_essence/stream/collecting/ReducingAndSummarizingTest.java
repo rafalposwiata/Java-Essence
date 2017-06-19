@@ -69,4 +69,17 @@ public class ReducingAndSummarizingTest {
     private <T> DoubleStream toDoubleStream(Collection<T> collection, ToDoubleFunction<? super T> mapper) {
         return collection.stream().mapToDouble(mapper);
     }
+
+    @Test
+    public void collectorsJoining() {
+        String peopleNames = ALL_PEOPLE
+                .stream()
+                .map(Person::getName)
+                .distinct()
+                .collect(joining("; "));
+
+        String expectedPeopleNames = "Tom; Megan; Julia";
+
+        Assert.assertEquals(expectedPeopleNames, peopleNames);
+    }
 }
