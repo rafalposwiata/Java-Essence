@@ -1,7 +1,6 @@
 package io.github.rafalposwiata.java_essence.stream.iteration;
 
 import io.github.rafalposwiata.java_essence.model.Person;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import java.util.List;
 import static io.github.rafalposwiata.java_essence.data.People.*;
 import static io.github.rafalposwiata.java_essence.model.Gender.MALE;
 import static java.util.stream.Collectors.toList;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Rafał Poświata.
@@ -24,8 +24,8 @@ public class IterationTest {
 
         List<Person> expectedListOfMen = Arrays.asList(TOM_LEE, TOM_BERG);
 
-        Assert.assertEquals(expectedListOfMen, listOfMenExternal);
-        Assert.assertEquals(expectedListOfMen, listOfMenInternal);
+        assertEquals(expectedListOfMen, listOfMenExternal);
+        assertEquals(expectedListOfMen, listOfMenInternal);
     }
 
     private List<Person> listOfMenFromExternalIteration() {

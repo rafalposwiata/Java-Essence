@@ -1,10 +1,12 @@
 package io.github.rafalposwiata.java_essence.lambda.method_reference;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.function.Function;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Rafał Poświata.
@@ -21,7 +23,7 @@ public class MethodReferenceTest {
                 .map(String::valueOf) //static method String.valueOf(Object obj)
                 .toArray(String[]::new);
 
-        Assert.assertArrayEquals(stringRepresentationsOfIntegers, stringsFromIntegers);
+        assertArrayEquals(stringRepresentationsOfIntegers, stringsFromIntegers);
     }
 
     @Test
@@ -33,7 +35,7 @@ public class MethodReferenceTest {
 
         Integer[] expectedLengthsOfStrings = {1, 2, 3};
 
-        Assert.assertArrayEquals(expectedLengthsOfStrings, lengthsOfStrings);
+        assertArrayEquals(expectedLengthsOfStrings, lengthsOfStrings);
     }
 
     @Test
@@ -46,7 +48,7 @@ public class MethodReferenceTest {
 
         String[] expectedStringsWithStarSuffixes = {"7*", "33*", "555*"};
 
-        Assert.assertArrayEquals(expectedStringsWithStarSuffixes, stringsWithStarSuffixes);
+        assertArrayEquals(expectedStringsWithStarSuffixes, stringsWithStarSuffixes);
     }
 
     @Test
@@ -57,8 +59,8 @@ public class MethodReferenceTest {
         String stringRepresentationOfInteger = "1";
         Integer expectedInteger = 1;
 
-        Assert.assertEquals(expectedInteger, stringToInteger.apply(stringRepresentationOfInteger));
-        Assert.assertEquals(expectedInteger, stringToIntegerWithMethodReference.apply(stringRepresentationOfInteger));
+        assertEquals(expectedInteger, stringToInteger.apply(stringRepresentationOfInteger));
+        assertEquals(expectedInteger, stringToIntegerWithMethodReference.apply(stringRepresentationOfInteger));
     }
 
     private class StringFormatter {

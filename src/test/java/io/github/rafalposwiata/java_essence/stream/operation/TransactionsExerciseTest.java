@@ -2,7 +2,6 @@ package io.github.rafalposwiata.java_essence.stream.operation;
 
 import io.github.rafalposwiata.java_essence.model.Trader;
 import io.github.rafalposwiata.java_essence.model.Transaction;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,6 +12,8 @@ import static java.util.Arrays.asList;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Rafał Poświata.
@@ -29,7 +30,7 @@ public class TransactionsExerciseTest {
 
         List<Transaction> expectedTransactionsFrom2011SortedByValue = asList(BRIAN_2011_300, RAOUL_2011_400);
 
-        Assert.assertEquals(expectedTransactionsFrom2011SortedByValue, transactionsFrom2011SortedByValue);
+        assertEquals(expectedTransactionsFrom2011SortedByValue, transactionsFrom2011SortedByValue);
     }
 
     @Test
@@ -42,7 +43,7 @@ public class TransactionsExerciseTest {
 
         List<String> expectedUniqueCities = asList("Cambridge", "Milan");
 
-        Assert.assertEquals(expectedUniqueCities, uniqueCities);
+        assertEquals(expectedUniqueCities, uniqueCities);
     }
 
     @Test
@@ -57,7 +58,7 @@ public class TransactionsExerciseTest {
 
         List<Trader> expectedTradersFromCambridgeSortedByName = asList(ALAN, BRIAN, RAOUL);
 
-        Assert.assertEquals(expectedTradersFromCambridgeSortedByName, tradersFromCambridgeSortedByName);
+        assertEquals(expectedTradersFromCambridgeSortedByName, tradersFromCambridgeSortedByName);
     }
 
     @Test
@@ -71,7 +72,7 @@ public class TransactionsExerciseTest {
 
         String expectedStringOfTradersNamesSortedAlphabetically = "AlanBrianMarioRaoul";
 
-        Assert.assertEquals(expectedStringOfTradersNamesSortedAlphabetically, stringOfTradersNamesSortedAlphabetically);
+        assertEquals(expectedStringOfTradersNamesSortedAlphabetically, stringOfTradersNamesSortedAlphabetically);
     }
 
     @Test
@@ -80,7 +81,7 @@ public class TransactionsExerciseTest {
                 .stream()
                 .anyMatch(transaction -> "Milan".equals(transaction.getTrader().getCity()));
 
-        Assert.assertTrue(isAnyTraderBasedInMilan);
+        assertTrue(isAnyTraderBasedInMilan);
     }
 
     @Test
@@ -93,7 +94,7 @@ public class TransactionsExerciseTest {
 
         int expectedHighestValueOfAllTransactions = 1000;
 
-        Assert.assertEquals(expectedHighestValueOfAllTransactions, highestValueOfAllTransactions);
+        assertEquals(expectedHighestValueOfAllTransactions, highestValueOfAllTransactions);
     }
 
     @Test
@@ -105,6 +106,6 @@ public class TransactionsExerciseTest {
 
         Transaction expectedTransactionWithTheSmallestValue = BRIAN_2011_300;
 
-        Assert.assertEquals(expectedTransactionWithTheSmallestValue, transactionWithTheSmallestValue);
+        assertEquals(expectedTransactionWithTheSmallestValue, transactionWithTheSmallestValue);
     }
 }

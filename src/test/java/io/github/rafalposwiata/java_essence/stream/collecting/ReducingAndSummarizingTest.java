@@ -1,7 +1,6 @@
 package io.github.rafalposwiata.java_essence.stream.collecting;
 
 import io.github.rafalposwiata.java_essence.model.Person;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Collection;
@@ -13,6 +12,7 @@ import java.util.stream.DoubleStream;
 import static io.github.rafalposwiata.java_essence.data.People.*;
 import static io.github.rafalposwiata.java_essence.model.Gender.FEMALE;
 import static java.util.stream.Collectors.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Rafał Poświata.
@@ -30,7 +30,7 @@ public class ReducingAndSummarizingTest {
 
         long expectedNumberOfWoman = 2;
 
-        Assert.assertEquals(expectedNumberOfWoman, numberOfWomen);
+        assertEquals(expectedNumberOfWoman, numberOfWomen);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class ReducingAndSummarizingTest {
 
         Person expectedPersonWithHighestWeight = TOM_BERG;
 
-        Assert.assertEquals(expectedPersonWithHighestWeight, personWithHighestWeight);
+        assertEquals(expectedPersonWithHighestWeight, personWithHighestWeight);
     }
 
     @Test
@@ -59,11 +59,11 @@ public class ReducingAndSummarizingTest {
         double expectedSum = toDoubleStream(ALL_PEOPLE, Person::getWeight).sum();
         double expectedAverage = toDoubleStream(ALL_PEOPLE, Person::getWeight).average().getAsDouble();
 
-        Assert.assertEquals(expectedMaxWeight, statistics.getMax(), DELTA);
-        Assert.assertEquals(expectedMinWeight, statistics.getMin(), DELTA);
-        Assert.assertEquals(expectedCount, statistics.getCount(), DELTA);
-        Assert.assertEquals(expectedSum, statistics.getSum(), DELTA);
-        Assert.assertEquals(expectedAverage, statistics.getAverage(), DELTA);
+        assertEquals(expectedMaxWeight, statistics.getMax(), DELTA);
+        assertEquals(expectedMinWeight, statistics.getMin(), DELTA);
+        assertEquals(expectedCount, statistics.getCount(), DELTA);
+        assertEquals(expectedSum, statistics.getSum(), DELTA);
+        assertEquals(expectedAverage, statistics.getAverage(), DELTA);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class ReducingAndSummarizingTest {
 
         String expectedPeopleNames = "Tom; Megan; Julia";
 
-        Assert.assertEquals(expectedPeopleNames, peopleNames);
+        assertEquals(expectedPeopleNames, peopleNames);
     }
 
     private <T> DoubleStream toDoubleStream(Collection<T> collection, ToDoubleFunction<? super T> mapper) {

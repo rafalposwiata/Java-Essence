@@ -1,9 +1,10 @@
 package io.github.rafalposwiata.java_essence.lambda.composing;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.function.Function;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Rafał Poświata.
@@ -19,7 +20,7 @@ public class ComposingFunctionsTest {
 
         Integer x = 1;
 
-        Assert.assertEquals(new Integer(4), h1.apply(x));
-        Assert.assertEquals(new Integer(3), h2.apply(x));
+        assertEquals(new Integer(4), h1.apply(x));
+        assertEquals(new Integer(3), h2.apply(x));
     }
 }

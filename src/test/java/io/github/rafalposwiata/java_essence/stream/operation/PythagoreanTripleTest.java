@@ -1,7 +1,6 @@
 package io.github.rafalposwiata.java_essence.stream.operation;
 
 import io.github.rafalposwiata.java_essence.model.PythagoreanTriple;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -9,6 +8,7 @@ import java.util.stream.IntStream;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Rafał Poświata.
@@ -33,6 +33,6 @@ public class PythagoreanTripleTest {
                 new PythagoreanTriple(6, 8, 10)
         );
 
-        Assert.assertEquals(expectedPythagoreanTriples, pythagoreanTriples);
+        assertEquals(expectedPythagoreanTriples, pythagoreanTriples);
     }
 }

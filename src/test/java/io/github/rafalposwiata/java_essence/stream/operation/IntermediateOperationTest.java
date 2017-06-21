@@ -1,7 +1,6 @@
 package io.github.rafalposwiata.java_essence.stream.operation;
 
 import io.github.rafalposwiata.java_essence.model.Person;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -11,6 +10,7 @@ import static io.github.rafalposwiata.java_essence.data.People.ALL_PEOPLE;
 import static io.github.rafalposwiata.java_essence.model.Gender.MALE;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Rafał Poświata.
@@ -26,7 +26,7 @@ public class IntermediateOperationTest {
 
         List<String> expectedSurnames = asList("Lee", "Berg", "Clark", "Clark");
 
-        Assert.assertEquals(expectedSurnames, surnames);
+        assertEquals(expectedSurnames, surnames);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class IntermediateOperationTest {
 
         List<String> expectedNamesAndSurnames = asList("Tom", "Lee", "Tom", "Berg", "Megan", "Clark", "Julia", "Clark");
 
-        Assert.assertEquals(expectedNamesAndSurnames, namesAndSurnames);
+        assertEquals(expectedNamesAndSurnames, namesAndSurnames);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class IntermediateOperationTest {
 
         List<String> expectedPairs = asList("1_3", "1_4", "2_3", "2_4", "3_3", "3_4");
 
-        Assert.assertEquals(expectedPairs, pairs);
+        assertEquals(expectedPairs, pairs);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class IntermediateOperationTest {
 
         List<String> expectedDistinctSurnames = asList("Lee", "Berg", "Clark");
 
-        Assert.assertEquals(expectedDistinctSurnames, distinctSurnames);
+        assertEquals(expectedDistinctSurnames, distinctSurnames);
     }
 
     @Test
@@ -82,7 +82,7 @@ public class IntermediateOperationTest {
 
         List<String> expectedSurnamesOfMen = asList("Lee", "Berg");
 
-        Assert.assertEquals(expectedSurnamesOfMen, surnamesOfMen);
+        assertEquals(expectedSurnamesOfMen, surnamesOfMen);
     }
 
     @Test
@@ -96,7 +96,7 @@ public class IntermediateOperationTest {
 
         List<String> expectedLimitedSurnames = asList("Lee", "Berg");
 
-        Assert.assertEquals(expectedLimitedSurnames, limitedSurnames);
+        assertEquals(expectedLimitedSurnames, limitedSurnames);
     }
 
     @Test
@@ -110,7 +110,7 @@ public class IntermediateOperationTest {
 
         List<String> expectedNotSkippedSurnames = asList("Clark", "Clark");
 
-        Assert.assertEquals(expectedNotSkippedSurnames, notSkippedSurnames);
+        assertEquals(expectedNotSkippedSurnames, notSkippedSurnames);
     }
 
     @Test
@@ -123,6 +123,6 @@ public class IntermediateOperationTest {
 
         List<String> expectedSortedSurnames = asList("Berg", "Clark", "Clark", "Lee");
 
-        Assert.assertEquals(expectedSortedSurnames, sortedSurnames);
+        assertEquals(expectedSortedSurnames, sortedSurnames);
     }
 }

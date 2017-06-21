@@ -2,7 +2,6 @@ package io.github.rafalposwiata.java_essence.stream.operation;
 
 import com.google.common.collect.Sets;
 import io.github.rafalposwiata.java_essence.model.Person;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Set;
@@ -12,6 +11,7 @@ import static io.github.rafalposwiata.java_essence.model.Gender.FEMALE;
 import static io.github.rafalposwiata.java_essence.model.Gender.MALE;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toSet;
+import static org.junit.Assert.*;
 
 /**
  * @author Rafał Poświata.
@@ -22,7 +22,7 @@ public class TerminalOperationTest {
     public void forEach() {
         ALL_PEOPLE
                 .stream()
-                .forEach(person -> Assert.assertTrue(person.getWeight() > 0));
+                .forEach(person -> assertTrue(person.getWeight() > 0));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class TerminalOperationTest {
 
         long expectedNumberOfWoman = 2;
 
-        Assert.assertEquals(expectedNumberOfWoman, numberOfWomen);
+        assertEquals(expectedNumberOfWoman, numberOfWomen);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class TerminalOperationTest {
 
         Set<String> expectedNames = Sets.newHashSet("Tom", "Megan", "Julia");
 
-        Assert.assertEquals(expectedNames, names);
+        assertEquals(expectedNames, names);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class TerminalOperationTest {
                 .stream()
                 .anyMatch(person -> MALE.equals(person.getGender()));
 
-        Assert.assertTrue(containsMan);
+        assertTrue(containsMan);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class TerminalOperationTest {
                 .stream()
                 .allMatch(person -> person.getWeight() < 100);
 
-        Assert.assertTrue(everyoneIsLighterThan100kg);
+        assertTrue(everyoneIsLighterThan100kg);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class TerminalOperationTest {
                 .stream()
                 .noneMatch(person -> person.getWeight() > 100);
 
-        Assert.assertTrue(nobodyIsHeavierThan100kg);
+        assertTrue(nobodyIsHeavierThan100kg);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class TerminalOperationTest {
                 .findAny()
                 .orElse(null);
 
-        Assert.assertNotNull(anyWoman);
+        assertNotNull(anyWoman);
     }
 
     @Test
@@ -95,7 +95,7 @@ public class TerminalOperationTest {
                 .findFirst()
                 .orElse(null);
 
-        Assert.assertNotNull(firstWoman);
+        assertNotNull(firstWoman);
     }
 
     @Test
@@ -113,10 +113,10 @@ public class TerminalOperationTest {
                 .orElse(null);
 
         // With findAny we don't know which one will be chosen
-        Assert.assertTrue(MEGAN_CLARK.equals(anyWoman) || JULIA_CLARK.equals(anyWoman));
+        assertTrue(MEGAN_CLARK.equals(anyWoman) || JULIA_CLARK.equals(anyWoman));
 
         // With findFirst will be chosen Megan, because she is first woman in ALL_PEOPLE list
-        Assert.assertTrue(MEGAN_CLARK.equals(firstWomen));
+        assertTrue(MEGAN_CLARK.equals(firstWomen));
     }
 
     @Test
@@ -128,7 +128,7 @@ public class TerminalOperationTest {
 
         Integer expectedSum = 15;
 
-        Assert.assertEquals(expectedSum, sum);
+        assertEquals(expectedSum, sum);
     }
 
     @Test
@@ -139,6 +139,6 @@ public class TerminalOperationTest {
 
         Integer expectedSum = 115;
 
-        Assert.assertEquals(expectedSum, sum);
+        assertEquals(expectedSum, sum);
     }
 }

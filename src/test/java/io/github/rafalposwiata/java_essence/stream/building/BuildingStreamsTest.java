@@ -3,7 +3,6 @@ package io.github.rafalposwiata.java_essence.stream.building;
 import io.github.rafalposwiata.java_essence.mock.RandomMock;
 import io.github.rafalposwiata.java_essence.model.Person;
 import io.github.rafalposwiata.java_essence.utils.PathUtils;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,6 +16,7 @@ import java.util.stream.Stream;
 import static io.github.rafalposwiata.java_essence.data.People.*;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Rafał Poświata.
@@ -31,7 +31,7 @@ public class BuildingStreamsTest {
 
         List<Person> expectedPeople = ALL_PEOPLE;
 
-        Assert.assertEquals(expectedPeople, people);
+        assertEquals(expectedPeople, people);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class BuildingStreamsTest {
 
         long expectedWordRingOccurrence = 3;
 
-        Assert.assertEquals(expectedWordRingOccurrence, wordRingOccurrence);
+        assertEquals(expectedWordRingOccurrence, wordRingOccurrence);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class BuildingStreamsTest {
 
         List<Integer> expectedEvenNumbers = asList(0, 2, 4, 6, 8);
 
-        Assert.assertEquals(expectedEvenNumbers, evenNumbers);
+        assertEquals(expectedEvenNumbers, evenNumbers);
     }
 
     @Test
@@ -72,6 +72,6 @@ public class BuildingStreamsTest {
                 .limit(5)
                 .collect(toList());
 
-        Assert.assertEquals(expectedBooleanValues, booleanValues);
+        assertEquals(expectedBooleanValues, booleanValues);
     }
 }

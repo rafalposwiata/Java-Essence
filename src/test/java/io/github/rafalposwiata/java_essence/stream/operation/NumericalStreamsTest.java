@@ -1,6 +1,5 @@
 package io.github.rafalposwiata.java_essence.stream.operation;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -9,6 +8,7 @@ import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Rafał Poświata.
@@ -25,7 +25,7 @@ public class NumericalStreamsTest {
 
         int expectedSumOfNumbers = 15;
 
-        Assert.assertEquals(expectedSumOfNumbers, sumOfNumbers);
+        assertEquals(expectedSumOfNumbers, sumOfNumbers);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class NumericalStreamsTest {
 
         OptionalInt expectedMaxNumber = OptionalInt.of(5);
 
-        Assert.assertEquals(expectedMaxNumber, maxNumber);
+        assertEquals(expectedMaxNumber, maxNumber);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class NumericalStreamsTest {
 
         List<Integer> expectedRangeOfNumbers = Arrays.asList(10, 11, 12, 13, 14, 15);
 
-        Assert.assertEquals(expectedRangeOfNumbers, rangeOfNumbers);
+        assertEquals(expectedRangeOfNumbers, rangeOfNumbers);
     }
 
     @Test
@@ -60,6 +60,6 @@ public class NumericalStreamsTest {
 
         List<Integer> expectedClosedRangeOfNumbers = Arrays.asList(10, 11, 12, 13, 14, 15, 16);
 
-        Assert.assertEquals(expectedClosedRangeOfNumbers, closedRangeOfNumbers);
+        assertEquals(expectedClosedRangeOfNumbers, closedRangeOfNumbers);
     }
 }
