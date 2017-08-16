@@ -11,12 +11,14 @@ public class Person {
     private String surname;
     private Gender gender;
     private double weight;
+    private double height;
 
-    public Person(String name, String surname, Gender gender, double weight) {
+    public Person(String name, String surname, Gender gender, double weight, double height) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
         this.weight = weight;
+        this.height = height;
     }
 
     public String getName() {
@@ -51,6 +53,14 @@ public class Person {
         this.weight = weight;
     }
 
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -60,12 +70,13 @@ public class Person {
         return name.equals(person.name)
                 && surname.equals(person.surname)
                 && gender.equals(person.gender)
-                && Double.compare(weight, person.weight) == 0;
+                && Double.compare(weight, person.weight) == 0
+                && Double.compare(height, person.height) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, gender, weight);
+        return Objects.hash(name, surname, gender, weight, height);
     }
 
     @Override

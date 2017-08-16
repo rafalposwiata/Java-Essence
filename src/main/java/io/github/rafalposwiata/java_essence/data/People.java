@@ -15,13 +15,13 @@ public class People {
 
     private People(){}
 
-    public static final Person TOM_LEE = new Person("Tom", "Lee", MALE, 65.3);
+    public static final Person TOM_LEE = new Person("Tom", "Lee", MALE, 65.3, 1.70);
 
-    public static final Person TOM_BERG = new Person("Tom", "Berg", MALE, 98.1);
+    public static final Person TOM_BERG = new Person("Tom", "Berg", MALE, 98.1, 1.80);
 
-    public static final Person MEGAN_CLARK = new Person("Megan", "Clark", FEMALE, 53.6);
+    public static final Person MEGAN_CLARK = new Person("Megan", "Clark", FEMALE, 53.6, 1.80);
 
-    public static final Person JULIA_CLARK = new Person("Julia", "Clark", FEMALE, 52.8);
+    public static final Person JULIA_CLARK = new Person("Julia", "Clark", FEMALE, 52.8, 1.60);
 
     public static final List<Person> ALL_PEOPLE = ImmutableList.of(TOM_LEE, TOM_BERG, MEGAN_CLARK, JULIA_CLARK);
 }

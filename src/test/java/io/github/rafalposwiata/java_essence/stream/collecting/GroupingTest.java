@@ -2,20 +2,22 @@ package io.github.rafalposwiata.java_essence.stream.collecting;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
+import io.github.rafalposwiata.java_essence.model.BMIGroup;
 import io.github.rafalposwiata.java_essence.model.Gender;
 import io.github.rafalposwiata.java_essence.model.Person;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import static io.github.rafalposwiata.java_essence.data.People.*;
+import static io.github.rafalposwiata.java_essence.model.BMIGroup.*;
 import static io.github.rafalposwiata.java_essence.model.Gender.FEMALE;
 import static io.github.rafalposwiata.java_essence.model.Gender.MALE;
-import static io.github.rafalposwiata.java_essence.utils.TestUtils.containsSameElements;
+import static io.github.rafalposwiata.java_essence.utils.TestUtils.assertSameElements;
 import static java.util.stream.Collectors.groupingBy;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * @author Rafał Poświata.
@@ -34,7 +36,26 @@ public class GroupingTest {
         );
 
         assertEquals(expectedPeopleGroupedByGender.keySet(), peopleGroupedByGender.keySet());
-        assertTrue(containsSameElements(expectedPeopleGroupedByGender.get(MALE), peopleGroupedByGender.get(MALE)));
-        assertTrue(containsSameElements(expectedPeopleGroupedByGender.get(FEMALE), peopleGroupedByGender.get(FEMALE)));
+        assertSameElements(expectedPeopleGroupedByGender.get(MALE), peopleGroupedByGender.get(MALE));
+        assertSameElements(expectedPeopleGroupedByGender.get(FEMALE), peopleGroupedByGender.get(FEMALE));
+    }
+
+    @Test
+    public void collectorsMultilevelGroupingBy() {
+        Function<Person, BMIGroup> bmiClassifier = person -> BMIGroup.getGroup(person.getWeight(), person.getHeight());
+
+        Map<BMIGroup, Map<Gender, List<Person>>> peopleGroupedByBMIAndGender = ALL_PEOPLE
+                .stream()
+                .collect(groupingBy(bmiClassifier, groupingBy(Person::getGender)));
+
+        List<Person> expectedObeseMale = Lists.newArrayList(TOM_BERG);
+        List<Person> expectedUnderweightFemale = Lists.newArrayList(MEGAN_CLARK);
+        List<Person> expectedNormalMale = Lists.newArrayList(TOM_LEE);
+        List<Person> expectedNormalFemale = Lists.newArrayList(JULIA_CLARK);
+
+        assertSameElements(expectedObeseMale, peopleGroupedByBMIAndGender.get(OBESE).get(MALE));
+        assertSameElements(expectedUnderweightFemale, peopleGroupedByBMIAndGender.get(UNDERWEIGHT).get(FEMALE));
+        assertSameElements(expectedNormalMale, peopleGroupedByBMIAndGender.get(NORMAL).get(MALE));
+        assertSameElements(expectedNormalFemale, peopleGroupedByBMIAndGender.get(NORMAL).get(FEMALE));
     }
 }
