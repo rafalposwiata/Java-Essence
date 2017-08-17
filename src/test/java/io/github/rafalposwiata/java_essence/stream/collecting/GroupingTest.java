@@ -7,16 +7,19 @@ import io.github.rafalposwiata.java_essence.model.Gender;
 import io.github.rafalposwiata.java_essence.model.Person;
 import org.junit.Test;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collector;
 
 import static io.github.rafalposwiata.java_essence.data.People.*;
 import static io.github.rafalposwiata.java_essence.model.BMIGroup.*;
 import static io.github.rafalposwiata.java_essence.model.Gender.FEMALE;
 import static io.github.rafalposwiata.java_essence.model.Gender.MALE;
 import static io.github.rafalposwiata.java_essence.utils.TestUtils.assertSameElements;
-import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.*;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -57,5 +60,20 @@ public class GroupingTest {
         assertSameElements(expectedUnderweightFemale, peopleGroupedByBMIAndGender.get(UNDERWEIGHT).get(FEMALE));
         assertSameElements(expectedNormalMale, peopleGroupedByBMIAndGender.get(NORMAL).get(MALE));
         assertSameElements(expectedNormalFemale, peopleGroupedByBMIAndGender.get(NORMAL).get(FEMALE));
+    }
+
+    @Test
+    public void collectingResultInEachSubgroup() {
+        Collector<Person, ?, Optional<Person>> highestPerson = maxBy(Comparator.comparingDouble(Person::getHeight));
+
+        Map<Gender, Person> highestPersonInEachGender = ALL_PEOPLE
+                .stream()
+                .collect(groupingBy(Person::getGender, collectingAndThen(highestPerson, Optional::get)));
+
+        Person expectedHighestMale = TOM_BERG;
+        Person expectedHighestFemale = MEGAN_CLARK;
+
+        assertEquals(expectedHighestMale, highestPersonInEachGender.get(MALE));
+        assertEquals(expectedHighestFemale, highestPersonInEachGender.get(FEMALE));
     }
 }
