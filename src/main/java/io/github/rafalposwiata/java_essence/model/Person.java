@@ -13,6 +13,9 @@ public class Person {
     private double weight;
     private double height;
 
+    public Person() {
+    }
+
     public Person(String name, String surname, Gender gender, double weight, double height) {
         this.name = name;
         this.surname = surname;
