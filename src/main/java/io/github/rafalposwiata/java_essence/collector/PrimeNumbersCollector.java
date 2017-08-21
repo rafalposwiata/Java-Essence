@@ -24,8 +24,8 @@ public class PrimeNumbersCollector implements Collector<Integer, Map<Boolean, Li
     public Supplier<Map<Boolean, List<Integer>>> supplier() {
         return () -> {
             Map<Boolean, List<Integer>> result = new HashMap<>();
-            result.put(true, new ArrayList<>());
-            result.put(false, new ArrayList<>());
+            result.put(TRUE, new ArrayList<>());
+            result.put(FALSE, new ArrayList<>());
             return result;
         };
     }

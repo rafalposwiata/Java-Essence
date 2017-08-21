@@ -1,3 +1,4 @@
 - double bracket initialization
 - how class loader works
 - exceptions hierarchy
+- how streams are splitted for parallel execution
