@@ -11,7 +11,7 @@ public class WordSpliterator implements Spliterator<Character> {
     private static final int MIN_SIZE_TO_SPLIT = 10;
 
     private final String text;
-    private int currentChar = 0;
+    private int currentCharIdx = 0;
 
     public WordSpliterator(String text) {
         this.text = text;
@@ -19,19 +19,19 @@ public class WordSpliterator implements Spliterator<Character> {
 
     @Override
     public boolean tryAdvance(Consumer<? super Character> action) {
-        action.accept(text.charAt(currentChar++));
-        return currentChar < text.length();
+        action.accept(text.charAt(currentCharIdx++));
+        return currentCharIdx < text.length();
     }
 
     @Override
     public Spliterator<Character> trySplit() {
-        int currentSize = text.length() - currentChar;
+        int currentSize = text.length() - currentCharIdx;
         if (currentSize < MIN_SIZE_TO_SPLIT) return null;
 
-        for (int splitPos = currentSize / 2 + currentChar; splitPos < text.length(); splitPos++) {
+        for (int splitPos = currentSize / 2 + currentCharIdx; splitPos < text.length(); splitPos++) {
             if (Character.isWhitespace(text.charAt(splitPos))) {
-                Spliterator<Character> spliterator = new WordSpliterator(text.substring(currentChar, splitPos));
-                currentChar = splitPos;
+                Spliterator<Character> spliterator = new WordSpliterator(text.substring(currentCharIdx, splitPos));
+                currentCharIdx = splitPos;
                 return spliterator;
             }
         }
@@ -40,7 +40,7 @@ public class WordSpliterator implements Spliterator<Character> {
 
     @Override
     public long estimateSize() {
-        return text.length() - currentChar;
+        return text.length() - currentCharIdx;
     }
 
     @Override

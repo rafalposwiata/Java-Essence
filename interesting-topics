@@ -2,3 +2,4 @@
 - how class loader works
 - exceptions hierarchy
 - how streams are splitted for parallel execution
+- how lambda expressions works
