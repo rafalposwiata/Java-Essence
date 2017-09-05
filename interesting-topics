@@ -3,3 +3,4 @@
 - exceptions hierarchy
 - how streams are splitted for parallel execution
 - how lambda expressions works
+- divide by zero (double vs int)
