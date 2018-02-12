@@ -62,9 +62,11 @@ public class DesignPatternsTest {
         tweeter.registerObserver((String notification) -> {
             if (notification.contains("football")) sportTweets.add(notification);
         });
+
         tweeter.registerObserver((String notification) -> {
             if (notification.contains("medicine")) scienceTweets.add(notification);
         });
+
         tweeter.registerObserver((String notification) -> {
             if (notification.contains("money")) businessTweets.add(notification);
         });
